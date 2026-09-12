@@ -1,0 +1,10 @@
+aiogram~=3.0
+aiogram-dialog==2.2.0
+environs~=15.1
+marshmallow~=4.3
+redis
+sqlalchemy
+asyncpg
+fastapi
+alembic
+uvicorn

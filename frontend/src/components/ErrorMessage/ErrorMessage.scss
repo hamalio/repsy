@@ -1,0 +1,25 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.error-message {
+  text-align: center;
+  padding: 40px;
+  background-color: $bg-surface;
+  border: 1px solid $border-color;
+  border-radius: 16px;
+
+  &__icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    color: $danger;
+    margin: 20px 0 10px;
+    font-size: 22px;
+  }
+
+  &__text {
+    color: $text-secondary;
+    font-size: 15px;
+  }
+}

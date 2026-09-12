@@ -1,0 +1,7 @@
+version: 2
+authtoken: YOUR_NGROK_AUTHTOKEN
+tunnels:
+  api:
+    addr: app:5173
+    proto: http
+    domain: your-domain.ngrok-free.dev

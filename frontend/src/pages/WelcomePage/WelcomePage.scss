@@ -1,0 +1,36 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.welcome-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+
+  &__card {
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+    background-color: $bg-surface;
+    border: 1px solid $border-color;
+    border-radius: 16px;
+  }
+
+  &__emoji {
+    font-size: 56px;
+    line-height: 1;
+  }
+
+  &__title {
+    margin: 16px 0 8px;
+    font-size: 24px;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: $text-secondary;
+  }
+}
