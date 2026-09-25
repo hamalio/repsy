@@ -1,0 +1,96 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.topic-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+
+  &__mark {
+    font-size: 56px;
+    line-height: 1;
+    color: $accent;
+  }
+
+  &__title {
+    margin-top: 14px;
+
+    font-family: $font-display;
+    font-size: 26px;
+    font-weight: $font-weight-bold;
+    letter-spacing: -0.5px;
+  }
+
+  &__blocks {
+    border-top: 1px solid $border-color;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+
+    padding: 20px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid $border-color;
+
+    font-family: inherit;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+
+    transition: opacity 0.12s ease;
+
+    &:active {
+      opacity: 0.6;
+    }
+
+    &--soon {
+      cursor: default;
+    }
+  }
+
+  &__block-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__block-title {
+    font-family: $font-display;
+    font-size: 18px;
+    font-weight: $font-weight-bold;
+  }
+
+  &__block--soon &__block-title {
+    color: $text-secondary;
+  }
+
+  &__block-text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: $text-secondary;
+  }
+
+  &__block-action {
+    font-family: $font-display;
+    font-size: 20px;
+    font-weight: $font-weight-bold;
+    color: $accent;
+  }
+
+  &__block--soon &__block-action {
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: $font-weight-semibold;
+    color: $text-muted;
+  }
+}

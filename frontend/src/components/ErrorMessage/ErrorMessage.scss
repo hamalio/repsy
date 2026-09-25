@@ -2,24 +2,26 @@
 
 .error-message {
   text-align: center;
-  padding: 40px;
+  padding: 36px 24px;
   background-color: $bg-surface;
-  border: 1px solid $border-color;
-  border-radius: 16px;
+  border: 2px solid $danger;
+  border-radius: $radius;
 
   &__icon {
     font-size: 48px;
-    margin-bottom: 10px;
   }
 
   &__title {
+    margin: 16px 0 8px;
+    font-family: $font-display;
+    font-size: 20px;
+    font-weight: $font-weight-black;
     color: $danger;
-    margin: 20px 0 10px;
-    font-size: 22px;
   }
 
   &__text {
     color: $text-secondary;
     font-size: 15px;
+    line-height: 1.5;
   }
 }

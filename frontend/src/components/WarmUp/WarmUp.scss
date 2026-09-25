@@ -1,0 +1,75 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.warm-up {
+  &__sentence {
+    margin-top: 12px;
+
+    font-size: 20px;
+    font-weight: $font-weight-semibold;
+    line-height: 1.6;
+  }
+
+  // The gap looks like a line to write on, not like an input field
+  &__gap {
+    display: inline-block;
+    min-width: 56px;
+    padding: 0 6px; // matters for long answers like "doesn't like", not for articles
+    border-bottom: 2px dashed $text-muted;
+
+    font-family: $font-display;
+    font-weight: $font-weight-bold;
+    text-align: center;
+
+    &--correct {
+      border-bottom-style: solid;
+      border-bottom-color: $accent;
+      color: $accent;
+    }
+
+    &--wrong {
+      border-bottom-color: $hot;
+      color: $hot;
+      text-decoration: line-through;
+    }
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__option {
+    padding: 12px 0;
+    background-color: $bg-surface-2;
+    border: 1.5px solid transparent;
+    border-radius: $radius-sm;
+
+    font-family: $font-display;
+    font-size: 15px;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    cursor: pointer;
+
+    &--picked {
+      border-color: $text-muted;
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.4;
+    }
+
+    &--picked:disabled {
+      opacity: 1;
+      border-color: $accent;
+    }
+  }
+
+  &__hint {
+    margin-top: 12px;
+    font-size: 13px;
+    color: $text-secondary;
+  }
+}

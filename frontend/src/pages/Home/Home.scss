@@ -1,0 +1,62 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  width: 100%;
+  min-width: 0; // grid item: never grow wider than the screen
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+
+  // Sections slide in one after another
+  & > * {
+    animation: rise-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{($i - 1) * 60}ms;
+      }
+    }
+  }
+
+  &__greeting {
+    font-size: 15px;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+  }
+
+  &__headline {
+    margin-top: 6px;
+
+    font-family: $font-display;
+    font-size: 24px;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  &__count {
+    color: $accent;
+  }
+
+  &__topics {
+    margin-top: 12px;
+    border-top: 1px solid $border-color;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home > * {
+    animation: none;
+  }
+}

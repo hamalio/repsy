@@ -1,0 +1,44 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+
+  border: none;
+  background: none;
+  color: $ink;
+  cursor: pointer;
+
+  transition: transform 0.08s ease, opacity 0.08s ease;
+
+  &--primary {
+    padding: 15px 20px;
+    background-color: $ink;
+    color: $accent;
+    border-radius: $radius-sm;
+
+    font-family: $font-display;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Secondary action: just words, so the card has one button, not two
+  &--link {
+    padding: 4px 0;
+
+    font-family: $font-body;
+    font-size: 15px;
+    font-weight: $font-weight-semibold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.today-card {
+  padding: 22px 20px 18px;
+  border-radius: $radius;
+  color: $ink;
+
+  &--due {
+    background-color: $accent;
+  }
+
+  // A rest day asks for nothing, so it stays quiet: dark card, blue only in the label
+  &--rest {
+    background-color: $bg-surface;
+    border: 1px solid $border-color;
+    color: $text-primary;
+  }
+
+  &--rest &__eyebrow {
+    color: $sky;
+    opacity: 1;
+  }
+
+  &--rest &__meta {
+    color: $text-secondary;
+  }
+
+  &--rest .button--link {
+    color: $accent;
+  }
+
+  &__eyebrow {
+    font-size: 13px;
+    font-weight: $font-weight-semibold;
+    opacity: 0.7;
+  }
+
+  &__title {
+    margin: 6px 0 8px;
+
+    font-family: $font-display;
+    font-size: 26px;
+    font-weight: $font-weight-black;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  &__meta {
+    font-size: 15px;
+    font-weight: $font-weight-medium;
+    line-height: 1.4;
+  }
+
+  &__actions {
+    display: grid;
+    justify-items: center; // link is clickable by its text width, not the whole card
+    gap: 10px;
+    margin-top: 20px;
+
+    .button--primary {
+      width: 100%;
+    }
+  }
+}

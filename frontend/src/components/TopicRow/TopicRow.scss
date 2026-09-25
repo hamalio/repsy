@@ -1,0 +1,72 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.topic-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%; // a button shrinks to its content otherwise
+
+  padding: 16px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid $border-color;
+
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  transition: opacity 0.12s ease;
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  // The topic own logo: the ending or word it is about
+  &__mark {
+    width: 58px;
+
+    font-size: 17px;
+    color: $accent;
+  }
+
+  &--new &__mark {
+    color: $text-muted;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: $font-weight-semibold;
+    line-height: 1.25;
+    color: $text-primary;
+  }
+
+  &__meta {
+    font-size: 13px;
+    color: $text-secondary;
+  }
+
+  // Status is just colored words, no badge around it
+  &__status {
+    font-size: 13px;
+    font-weight: $font-weight-semibold;
+  }
+
+  &--due &__status {
+    color: $hot;
+  }
+
+  &--scheduled &__status {
+    color: $sky;
+  }
+
+  &--new &__status {
+    color: $text-primary;
+  }
+}

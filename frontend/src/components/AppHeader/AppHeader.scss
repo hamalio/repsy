@@ -1,0 +1,38 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__mark {
+    width: 34px;
+  }
+
+  &__wordmark {
+    font-family: $font-display;
+    font-size: 22px;
+    font-weight: $font-weight-black;
+    letter-spacing: -0.5px;
+  }
+
+  &__avatar {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+
+    background-color: $bg-surface-2;
+    border: 2px solid $border-color;
+    border-radius: 50%;
+
+    font-family: $font-display;
+    font-size: 13px;
+    font-weight: $font-weight-bold;
+  }
+}

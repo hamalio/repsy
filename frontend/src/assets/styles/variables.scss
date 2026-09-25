@@ -1,16 +1,29 @@
+// Fonts
+$font-display: "Unbounded", sans-serif; // headings, numbers, logo
+$font-body: "Onest", sans-serif; // everything else
+
 // Font weights
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
+$font-weight-black: 800;
 
 // Colors
-$bg-primary: #0f172a; // page background (matches Telegram header/footer)
-$bg-surface: #1e293b; // cards
-$bg-surface-2: #273449; // nested panels
-$border-color: #334155; // thin borders / dividers
-$text-primary: #f1f5f9; // titles / values
-$text-secondary: #94a3b8; // labels / secondary text
-$text-muted: #64748b; // muted text
-$accent: #3b82f6; // accent (blue)
-$danger: #f87171; // errors
+$bg-primary: #141210; // page background (matches Telegram header/footer)
+$bg-surface: #1f1c19; // cards
+$bg-surface-2: #2a2622; // nested panels
+$border-color: #3a342e; // thin borders / dividers
+$text-primary: #f6efe4; // titles / values
+$text-secondary: #b3a896; // labels / secondary text
+$text-muted: #7a7064; // muted text
+$ink: #141210; // text on bright backgrounds
+
+$accent: #ffb938; // amber: main actions, progress
+$hot: #e8583a; // tomato: due right now — the only thing it means, keep it rare
+$sky: #7cc6ff; // scheduled later
+$danger: #ff6b6b; // errors
+
+// Shapes
+$radius: 16px;
+$radius-sm: 10px;

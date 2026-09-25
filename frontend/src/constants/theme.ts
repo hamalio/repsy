@@ -1,0 +1,1 @@
+export const TELEGRAM_BG_COLOR = "#141210"

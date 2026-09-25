@@ -1,16 +1,20 @@
 import "./WelcomePage.scss"
+import Logo from "@/assets/images/logo.svg?react"
 
 function WelcomePage() {
   return (
     <div className="welcome-page">
-      <div className="welcome-page__card">
-        <div className="welcome-page__emoji">👋</div>
-        <h1 className="welcome-page__title">Вітаємо!</h1>
-        <p className="welcome-page__text">
-          Цей застосунок працює всередині Telegram. Щоб продовжити, відкрийте його
-          через нашого бота в Telegram.
-        </p>
-      </div>
+      <p className="welcome-page__logo">
+        <Logo className="welcome-page__logo-mark" />
+        repsy
+      </p>
+
+      <h1 className="welcome-page__title">Щоб не забувати вивчене</h1>
+      <p className="welcome-page__text">
+        Короткі підходи й нагадування в потрібний час.
+      </p>
+
+      <p className="welcome-page__note">Відкрий Repsy через бота в Telegram</p>
     </div>
   )
 }

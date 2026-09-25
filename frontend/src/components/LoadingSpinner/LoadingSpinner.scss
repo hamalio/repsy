@@ -2,28 +2,44 @@
 
 .loader {
   text-align: center;
-  padding: 40px;
-  background-color: $bg-surface;
-  border: 1px solid $border-color;
-  border-radius: 16px;
+  padding: 40px 20px;
 
+  // Three bars pumping like a barbell counter
   &__spinner {
-    width: 48px;
-    height: 48px;
-    border: 4px solid $border-color;
-    border-top-color: $accent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 6px;
+    height: 36px;
+    margin-bottom: 18px;
+
+    span {
+      width: 10px;
+      height: 100%;
+      background-color: $accent;
+      border-radius: 4px;
+      animation: pump 0.9s ease-in-out infinite;
+
+      &:nth-child(2) {
+        background-color: $hot;
+        animation-delay: 0.15s;
+      }
+
+      &:nth-child(3) {
+        background-color: $sky;
+        animation-delay: 0.3s;
+      }
+    }
   }
 
   &__message {
     color: $text-secondary;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: $font-weight-medium;
   }
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes pump {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
 }

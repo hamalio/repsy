@@ -1,0 +1,14 @@
+@use "@/assets/styles/variables.scss" as *;
+
+// Size and color come from the parent; the mark only sets the typeface
+.topic-mark {
+  font-family: $font-display;
+  font-weight: $font-weight-black;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+
+  &__joint {
+    color: $text-muted;
+    font-weight: $font-weight-bold;
+  }
+}

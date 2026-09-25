@@ -2,35 +2,50 @@
 
 .welcome-page {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 20px;
-  font-family: "Poppins", sans-serif;
+  padding: 24px;
 
-  &__card {
-    max-width: 400px;
-    padding: 40px;
-    text-align: center;
-    background-color: $bg-surface;
-    border: 1px solid $border-color;
-    border-radius: 16px;
-  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-  &__emoji {
-    font-size: 56px;
+    font-family: $font-display;
+    font-size: 40px;
+    font-weight: $font-weight-black;
+    letter-spacing: -2px;
     line-height: 1;
   }
 
+  &__logo-mark {
+    width: 48px;
+  }
+
   &__title {
-    margin: 16px 0 8px;
-    font-size: 24px;
+    margin: 28px 0 12px;
+
+    font-family: $font-display;
+    font-size: 26px;
     font-weight: $font-weight-bold;
-    color: $text-primary;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    text-wrap: balance;
   }
 
   &__text {
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.55;
     color: $text-secondary;
+  }
+
+  &__note {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid $border-color;
+
+    font-size: 15px;
+    font-weight: $font-weight-semibold;
+    color: $accent;
   }
 }

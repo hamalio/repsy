@@ -7,7 +7,11 @@ interface LoadingSpinnerProps {
 const LoadingSpinner = ({ message }: LoadingSpinnerProps) => {
     return (
         <div className="loader">
-            <div className="loader__spinner"></div>
+            <div className="loader__spinner">
+                <span />
+                <span />
+                <span />
+            </div>
             {message && <p className="loader__message">{message}</p>}
         </div>
     )

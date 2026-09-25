@@ -5,9 +5,3 @@ export type User = {
   language: string
   language_code: string
 }
-
-export type UpdateUserData = {
-  full_name: string
-  username?: string
-}
-

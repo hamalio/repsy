@@ -1,0 +1,120 @@
+@use "@/assets/styles/variables.scss" as *;
+
+.theory-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+
+  // Selectable on purpose: users copy examples from here
+  user-select: text;
+  -webkit-user-select: text;
+
+  &__eyebrow {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+
+    font-size: 13px;
+    font-weight: $font-weight-semibold;
+    color: $text-secondary;
+  }
+
+  &__mark {
+    font-size: 15px;
+    color: $accent;
+  }
+
+  &__title {
+    margin-top: 8px;
+
+    font-family: $font-display;
+    font-size: 26px;
+    font-weight: $font-weight-bold;
+    letter-spacing: -0.5px;
+  }
+
+  &__intro {
+    margin-top: 12px;
+
+    font-size: 16px;
+    line-height: 1.55;
+    color: $text-secondary;
+  }
+
+  &__section {
+    padding-top: 24px;
+    border-top: 1px solid $border-color;
+  }
+
+  &__section-title {
+    font-family: $font-display;
+    font-size: 17px;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+  }
+
+  &__text {
+    margin-top: 10px;
+
+    font-size: 15px;
+    line-height: 1.55;
+    color: $text-secondary;
+  }
+
+  &__examples {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+    list-style: none;
+  }
+
+  // English is what the page is about, so examples are the loudest text
+  &__example {
+    padding-left: 14px;
+    border-left: 2px solid $border-color;
+
+    font-size: 17px;
+    font-weight: $font-weight-medium;
+    line-height: 1.45;
+  }
+
+  &__article {
+    background: none;
+    color: $accent;
+    font-weight: $font-weight-bold;
+  }
+
+  &__steps {
+    margin-top: 10px;
+    list-style: none;
+  }
+
+  &__step {
+    position: relative;
+    padding-left: 34px;
+
+    font-size: 15px;
+    line-height: 1.45;
+
+    & + & {
+      margin-top: 12px;
+    }
+  }
+
+  &__step-count {
+    position: absolute;
+    left: 0;
+
+    font-family: $font-display;
+    font-size: 14px;
+    font-weight: $font-weight-bold;
+    color: $accent;
+  }
+}
