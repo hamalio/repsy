@@ -1,5 +1,5 @@
 from typing import Optional
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.dialects.postgresql import insert
 
 from infrastructure.database.models import User, Language
@@ -44,6 +44,11 @@ class UsersRepo(BaseRepo):
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
     
+    async def get_languages(self):
+        stmt = select(Language).order_by(Language.language_id)
+        result = await self.session.execute(stmt)
+        return result.scalars().all()
+
     async def get_user_by_id(
         self,
         user_id: int
@@ -51,3 +56,14 @@ class UsersRepo(BaseRepo):
         stmt = select(User).where(User.user_id == user_id)
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
+
+    async def update_user_language(self, user_id: int, language_code: str):
+        stmt = (
+            update(User)
+            .where(User.user_id == user_id)
+            .values(
+                language_id=select(Language.language_id).where(Language.code == language_code).scalar_subquery()
+            )
+        )
+        await self.session.execute(stmt)
+        await self.session.commit()

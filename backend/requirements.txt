@@ -1,9 +1,10 @@
 aiogram~=3.0
 aiogram-dialog==2.2.0
+aiogram-i18n[runtime]
 environs~=15.1
 marshmallow~=4.3
 redis
-sqlalchemy
+sqlalchemy[asyncio]
 asyncpg
 fastapi
 alembic

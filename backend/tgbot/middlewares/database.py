@@ -26,7 +26,7 @@ class DatabaseMiddleware(BaseMiddleware):
 
             if not user:
               language_id = await repo.users.get_language_id(
-                  code=event.from_user.language_code
+                  code=event_from_user.language_code
               )
 
               if language_id is None:

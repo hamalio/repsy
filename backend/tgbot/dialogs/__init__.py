@@ -1,10 +1,11 @@
 """Import all dialogs and add them to dialogs_list."""
 from aiogram_dialog import Dialog
-from tgbot.dialogs.windows import main_menu
+from tgbot.dialogs.windows import main_menu, language_menu
 
 dialogs_list = [
   Dialog(
     main_menu(),
+    language_menu(),
   )
 ]
 

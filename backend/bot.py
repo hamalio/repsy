@@ -6,6 +6,8 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.filters import CommandStart
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.storage.redis import RedisStorage, DefaultKeyBuilder
+from aiogram_i18n import I18nMiddleware
+from aiogram_i18n.cores.fluent_runtime_core import FluentRuntimeCore
 from aiogram_dialog import setup_dialogs
 
 from infrastructure.database.setup import create_engine, create_session_pool
@@ -15,6 +17,7 @@ from tgbot.handlers import routers_list
 from tgbot.handlers.user import user_start
 from tgbot.middlewares.config import ConfigMiddleware
 from tgbot.middlewares.database import DatabaseMiddleware
+from tgbot.middlewares.translations import UserManager
 from tgbot.services import broadcaster
 
 
@@ -22,7 +25,12 @@ async def on_startup(bot: Bot, admin_ids: list[int]):
     await broadcaster.broadcast(bot, admin_ids, "Bot started")
 
 
-def register_global_middlewares(dp: Dispatcher, config: Config, session_pool=None):
+def register_global_middlewares(
+    dp: Dispatcher,
+    config: Config,
+    i18n_middleware: I18nMiddleware,
+    session_pool=None,
+):
     """
     Register global middlewares for the given dispatcher.
     Global middlewares here are the ones that are applied to all the handlers (you specify the type of update)
@@ -30,6 +38,7 @@ def register_global_middlewares(dp: Dispatcher, config: Config, session_pool=Non
     :param dp: The dispatcher instance.
     :type dp: Dispatcher
     :param config: The configuration object from the loaded configuration.
+    :param i18n_middleware: The i18n middleware, registered after the database middleware.
     :param session_pool: Optional session pool object for the database using SQLAlchemy.
     :return: None
     """
@@ -39,8 +48,9 @@ def register_global_middlewares(dp: Dispatcher, config: Config, session_pool=Non
     ]
 
     for middleware_type in middleware_types:
-        dp.message.outer_middleware(middleware_type)
-        dp.callback_query.outer_middleware(middleware_type)
+        dp.update.outer_middleware(middleware_type)
+        
+    i18n_middleware.setup(dp)
 
 
 def setup_logging():
@@ -100,11 +110,17 @@ async def main():
     engine = create_engine(config.db)
     session_pool = create_session_pool(engine)
 
+    i18n_middleware = I18nMiddleware(
+        core=FluentRuntimeCore(path="tgbot/locales"),
+        manager=UserManager(),
+        default_locale="uk",
+    )
+
     dp.include_routers(*routers_list, *dialogs_list)
 
     setup_dialogs(dp)
 
-    register_global_middlewares(dp, config, session_pool)
+    register_global_middlewares(dp, config, i18n_middleware, session_pool)
 
     await on_startup(bot, config.tg_bot.admin_ids)
     await dp.start_polling(bot)

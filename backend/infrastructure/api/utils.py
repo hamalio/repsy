@@ -17,7 +17,7 @@ db_config = DbConfig.from_env(env)
 engine = create_engine(db_config)
 session_pool = create_session_pool(engine)
 
-INIT_DATA_TTL = timedelta(hours=1)
+INIT_DATA_TTL = timedelta(hours=24)
 
 
 def parse_auth_header(authorization: str) -> WebAppInitData:
