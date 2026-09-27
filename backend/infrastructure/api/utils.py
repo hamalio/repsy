@@ -1,7 +1,7 @@
 import logging
 from datetime import datetime, timedelta, timezone
 
-from aiogram.utils.web_app import WebAppInitData, safe_parse_webapp_init_data
+from aiogram.utils.web_app import WebAppInitData, WebAppUser, safe_parse_webapp_init_data
 from environs import Env
 from fastapi import HTTPException
 
@@ -50,7 +50,7 @@ def parse_auth_header(authorization: str) -> WebAppInitData:
     return init_data
 
 
-def validate_telegram_auth_data(authorization: str, user_id: int = None) -> int:
+def validate_telegram_auth_data(authorization: str, user_id: int = None) -> WebAppUser:
     init_data = parse_auth_header(authorization)
 
     if init_data.user is None:
@@ -67,4 +67,4 @@ def validate_telegram_auth_data(authorization: str, user_id: int = None) -> int:
             detail="user_id in url and in auth data do not match",
         )
 
-    return init_data.user.id
+    return init_data.user

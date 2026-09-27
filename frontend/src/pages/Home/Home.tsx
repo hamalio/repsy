@@ -1,5 +1,6 @@
 import "./Home.scss"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import AppHeader from "@/components/AppHeader/AppHeader"
 import TopicRow from "@/components/TopicRow/TopicRow"
 import SectionTitle from "@/components/SectionTitle/SectionTitle"
@@ -13,6 +14,7 @@ const TOPICS: Topic[] = [ARTICLES]
 
 function Home() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const { initData } = getTelegramUserData()
   const { data: user } = useCurrentUserQuery(initData)
 
@@ -22,7 +24,7 @@ function Home() {
     return (
       <>
         <section className="home__intro">
-          {firstName && <p className="home__greeting">Привіт, {firstName}!</p>}
+          {firstName && <p className="home__greeting">{t("pages.home.greeting", { name: firstName })}</p>}
           {/*<h1 className="home__headline">
             {focus.kind === "due" && (
               <>
@@ -40,7 +42,7 @@ function Home() {
          {/*<WeekStrip now={now} /> */}
 
         <section>
-          <SectionTitle count={TOPICS.length}>Програма</SectionTitle>
+          <SectionTitle count={TOPICS.length}>{t("pages.home.program")}</SectionTitle>
 
           <div className="home__topics">
             {TOPICS.map((topic) => (

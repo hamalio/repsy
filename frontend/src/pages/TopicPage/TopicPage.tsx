@@ -1,6 +1,7 @@
 import "./TopicPage.scss"
 import classNames from "classnames"
 import { useNavigate, useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import BackButton from "@/components/BackButton/BackButton"
 import TopicMark from "@/components/TopicMark/TopicMark"
 import NotFound from "@/pages/NotFound/NotFound"
@@ -10,6 +11,7 @@ import { THEORY } from "@/constants/theory"
 function TopicPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   if (slug !== ARTICLES.slug) {
     return <NotFound />
@@ -19,17 +21,17 @@ function TopicPage() {
 
   const blocks = [
     {
-      title: "Теорія",
-      text: "Правила й приклади",
+      title: t("pages.topic.theory.title"),
+      text: t("pages.topic.theory.text"),
       onClick: hasTheory ? () => navigate(`/topics/${ARTICLES.slug}/theory`) : undefined,
     },
     {
-      title: "Тренування",
-      text: "Без оцінок, пояснення одразу",
+      title: t("pages.topic.training.title"),
+      text: t("pages.topic.training.text"),
     },
     {
-      title: "Перевірка",
-      text: "10 повторень, пояснення в кінці",
+      title: t("pages.topic.check.title"),
+      text: t("pages.topic.check.text"),
     },
   ]
 
@@ -53,7 +55,7 @@ function TopicPage() {
               <span className="topic-page__block-title">{block.title}</span>
               <span className="topic-page__block-text">{block.text}</span>
             </span>
-            <span className="topic-page__block-action">{block.onClick ? "→" : "скоро"}</span>
+            <span className="topic-page__block-action">{block.onClick ? "→" : t("pages.topic.soon")}</span>
           </button>
         ))}
       </div>

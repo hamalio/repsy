@@ -14,5 +14,6 @@ export const useCurrentUserQuery = (initData: string | undefined) => {
             })
             return result.data as User
         },
+        enabled: !!initData,
     })
 }

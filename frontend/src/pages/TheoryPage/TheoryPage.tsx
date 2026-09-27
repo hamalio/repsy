@@ -1,5 +1,6 @@
 import "./TheoryPage.scss"
 import { useNavigate, useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 import BackButton from "@/components/BackButton/BackButton"
 import TopicMark from "@/components/TopicMark/TopicMark"
 import NotFound from "@/pages/NotFound/NotFound"
@@ -15,6 +16,7 @@ const renderExample = (example: string) =>
 function TheoryPage() {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const theory = THEORY[ARTICLES.slug]
   if (slug !== ARTICLES.slug || !theory) {
@@ -26,7 +28,7 @@ function TheoryPage() {
       <header className="theory-page__header">
         <p className="theory-page__eyebrow">
           <TopicMark topic={ARTICLES} className="theory-page__mark" />
-          Теорія
+          {t("pages.theory.label")}
         </p>
         <h1 className="theory-page__title">{ARTICLES.title}</h1>
         <p className="theory-page__intro">{theory.intro}</p>
@@ -46,7 +48,7 @@ function TheoryPage() {
       ))}
 
       <section className="theory-page__section">
-        <h2 className="theory-page__section-title">Як обрати</h2>
+        <h2 className="theory-page__section-title">{t("pages.theory.howToChoose")}</h2>
 
         <ol className="theory-page__steps">
           {theory.steps.map((step, i) => (
